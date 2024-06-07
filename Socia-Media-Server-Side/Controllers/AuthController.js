@@ -15,6 +15,7 @@ export const registerUser = async (req, res) => {
     if (oldUser) {
       return res.status(400).json({ message: "username is already registered!" })
     }
+    
     const user = await newUser.save();
 
     const token = jwt.sign({
