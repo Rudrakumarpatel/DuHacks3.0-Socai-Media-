@@ -8,11 +8,23 @@ import PostRoute from './Routes/PostRoute.js'
 import cors from 'cors'
 import UploadRoute from './Routes/UploadRoute.js'
 
+app.use(cors(
+  {
+    origin:["https://Social-media-r3002.vercel.app"],
+    methods:["GET","POST","DELETE","OPTIONS","PUT"],
+    allowedHeaders:["Content-Type","Authorization"],
+    credentials:true,
+    optionsSuccessStatus:200,
+    preflightContinue:false,
+  }
+));
+
 // Routes
 
 const app = express();
 
 //serve images for public
+app.use(express.json());
 app.use(express.static('public'))
 app.use('/images',express.static("images"))
 
